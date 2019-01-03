@@ -6,7 +6,7 @@ Setting
 ____________________
 
 
-- Easy maintenance of Apple laptops 
+- The objective was an easy maintenance of Apple laptops after usage by AVID users 
 	- Use without instruction
 	- Feedback on executed steps
 	- XML file as command base to extend it easily
