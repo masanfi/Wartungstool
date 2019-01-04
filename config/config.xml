@@ -1,0 +1,26 @@
+<root>	
+	<element> 
+		<id>0</id>
+    	<order>Delete</order> 
+    	<source>/Users/.../test/1/</source> 
+    	<target>false</target> 
+	</element>
+	<element> 
+		<id>0</id>
+    	<order>Delete</order> 
+    	<source>/Users/..../test/Neuer Ordner/</source> 
+    	<target>false</target> 
+	</element>  
+	<element> 
+		<id>1</id>
+    	<order>Copy</order> 
+    	<source>/Users/..../Desktop/test.txt</source> 
+    	<target>/Users/..../test/test.txt</target> 
+	</element> 
+	<element> 
+		<id>1</id>
+    	<order>Copy</order> 
+    	<source>/Users/..../Desktop/test2.txt</source> 
+    	<target>/Users/..../test/test2.txt</target> 
+	</element> 
+</root>	
