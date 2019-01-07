@@ -1,6 +1,8 @@
 package wtool;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,8 +26,9 @@ public class CommandClass {
      * After that, it launch the Apple Script Class and compose 
      * a feedback for the Viewer
      * @param 
+	 * @throws InterruptedException, IOException 
      */
-	public static void processStart() throws InterruptedException{
+	public static void processStart() throws InterruptedException, IOException{
 		XMLReader xmlObject = new XMLReader();
 		int length = xmlObject.getItems().size();
 		xmlObject.getItems().get(0);		
@@ -40,7 +43,7 @@ public class CommandClass {
 				} else if(xmlObject.getItems().get(i).getOrder().equals("Copy")){
 					Path source = Paths.get(xmlObject.getItems().get(i).getSource());	
 					Path target = Paths.get(xmlObject.getItems().get(i).getTarget());
-					CopyClass.copyFile(source, target);
+					Files.walkFileTree(source, new CopyClass(source, target));
 				}
 			}
 		}else{

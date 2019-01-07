@@ -22,9 +22,9 @@ public class StartAppleScripts{
      *
      * @param 
      */
-	public static void scripts() throws InterruptedException{
+	public static void scripts() throws InterruptedException{ 
 		Runtime runtime = Runtime.getRuntime();
-		String[] args = { "osascript", "-e", "tell application \"Finder\" to set desktop picture to POSIX file \"/Users/.../../....jpg\"", 
+		String[] args = { "osascript", "-e", "tell application \"Finder\" to set desktop picture to POSIX file \"/Users/admin/Pictures/rbb-VJ.jpg\"", 
     		"-e", "tell application \"System Events\" to tell screen saver preferences to set delay interval to 0"};
     
 		try{

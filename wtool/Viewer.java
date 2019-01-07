@@ -1,6 +1,9 @@
 package wtool;
 
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +12,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -44,17 +49,15 @@ public class Viewer extends Application {
 		    root.setVgap(10);  
 		    root.getColumnConstraints().add(new ColumnConstraints(200));
 		    root.getColumnConstraints().add(new ColumnConstraints(400));
-		    root.setPadding(new Insets(10, 10, 10, 10));
-		        
-		    //Eight Text-Label
-		    Label headline = new Label("rbb Wartungstool");
-			root.add(headline, 0,0,3,1);
-			headline.setTextFill(Color.DARKRED);
-		    headline.setPrefHeight(25);
-		    headline.setStyle("-fx-font: 24 futura;");
-		    headline.setAlignment(Pos.CENTER);
-		    headline.setPrefWidth(450);
-			    
+		    root.setPadding(new Insets(5, 10, 10, 10));
+		    
+		    Image image = new Image("wtool_header.png");
+		    ImageView imageView = new ImageView(image);
+		    imageView.setFitWidth(450);
+		    imageView.setFitHeight(72);
+		    root.getChildren().add(imageView);
+		    
+		    //Six Text-Label  
 		    Label copyright = new Label("Copyright \u00a9 2019 Martin Sanfilippo");
 		    root.add(copyright, 0,11,1,1);
 		    copyright.setTextFill(Color.BLACK);
@@ -70,26 +73,19 @@ public class Viewer extends Application {
 		    fragen.setStyle("-fx-font: 7 futura;");
 		    fragen.setAlignment(Pos.BASELINE_RIGHT);
 		    fragen.setPrefWidth(450);
-		        
-		    Label hinweis = new Label("User-Daten entfernen und Laptop auf Standard zurücksetzen.");
-		    root.add(hinweis, 0,2,3,1);
-		    hinweis.setTextFill(Color.DARKRED);
-		    hinweis.setStyle("-fx-font: 10 futura;");
-		    hinweis.setAlignment(Pos.CENTER);
-		    hinweis.setPrefWidth(450);
 			    
 		    Label startLabel = new Label("ACHTUNG!");
 		    root.add(startLabel, 0,5,3,1);
 		    startLabel.setPrefWidth(450);
 		    startLabel.setPrefHeight(20);
 	        startLabel.setAlignment(Pos.CENTER);
-	        startLabel.setTextFill(Color.DARKRED);
+	        startLabel.setTextFill(Color.web("#E31818"));
 	        startLabel.setStyle("-fx-font: 12 futura;");
 		        
 	        Label feedback = new Label("");
 	        root.add(feedback, 0,6,3,1);
 	        feedback.setPrefWidth(450);
-	        feedback.setPrefHeight(55);
+	        feedback.setPrefHeight(80);
 	        feedback.setAlignment(Pos.CENTER);
 	        feedback.setTextFill(Color.BLACK);
 	        feedback.setStyle("-fx-font: 12 futura;");
@@ -111,7 +107,7 @@ public class Viewer extends Application {
 	        fehler.setPrefWidth(450);
 	        fehler.setPrefHeight(60);
 	        fehler.setAlignment(Pos.CENTER);
-	        fehler.setTextFill(Color.DARKRED);
+	        fehler.setTextFill(Color.web("#E31818"));
 	        fehler.setStyle("-fx-font: 12 futura;");
 		        
 	        //Two Buttons 
@@ -126,7 +122,7 @@ public class Viewer extends Application {
 	        root.add(exitButton, 0,10,3,1);
 	        exitButton.setPrefWidth(450);
 	        exitButton.setAlignment(Pos.CENTER);
-	        exitButton.setStyle("-fx-base: DARKRED");
+	        exitButton.setStyle("-fx-base: #E31818");
 		        
 	        //Button for starting the method of the CommandClass
 	        //Display Feedback of the CommandClass
@@ -139,6 +135,8 @@ public class Viewer extends Application {
 					try {
 						CommandClass.processStart();
 					} catch (InterruptedException e) {
+						System.err.format(e + " Fehler");
+					} catch (IOException e) {
 						System.err.format(e + " Fehler");
 					}
 					
